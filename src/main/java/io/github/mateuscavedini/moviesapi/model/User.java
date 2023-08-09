@@ -28,10 +28,13 @@ import jakarta.persistence.Table;
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
+    @Column(name = "user_id", nullable = false)
     private Long id;
+    @Column(nullable = false, unique = true, length = 25)
     private String username;
+    @Column(nullable = false, length = 72)
     private String password;
+    @Column(nullable = false, unique = true, length = 50)
     private String email;
     @OneToMany(targetEntity = List.class, mappedBy = "user", cascade = CascadeType.ALL)
     private Set<List> lists = new HashSet<>();

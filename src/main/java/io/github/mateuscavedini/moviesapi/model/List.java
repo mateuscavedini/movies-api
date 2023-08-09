@@ -18,7 +18,7 @@ import jakarta.persistence.Table;
 public class List {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "list_id")
+    @Column(name = "list_id", nullable = false)
     private Long id;
     @ManyToOne(targetEntity = ListType.class)
     @JoinColumn(name = "list_type_id")
