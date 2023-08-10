@@ -20,12 +20,15 @@ public class List {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "list_id", nullable = false)
     private Long id;
+
     @ManyToOne(targetEntity = ListType.class)
     @JoinColumn(name = "list_type_id")
     private ListType listType;
+
     @ManyToOne(targetEntity = User.class)
     @JoinColumn(name = "user_id")
     private User user;
+    
     @ManyToMany(targetEntity = Movie.class)
     private Set<Movie> movies = new HashSet<>();
 

@@ -15,14 +15,19 @@ public class Movie {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "movie_id", nullable = false)
     private Long id;
+
     @Column(name = "imdb_id", nullable = false, unique = true, length = 15)
     private String imdbId;
+
     @Column(nullable = false)
     private String title;
+
     @Column(nullable = false)
     private Integer year;
+
     @Column(columnDefinition = "text", nullable = false)
     private String plot;
+    
     @Column(name = "poster_url", nullable = false)
     private String posterUrl;
 

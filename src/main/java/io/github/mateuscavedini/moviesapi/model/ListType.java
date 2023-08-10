@@ -17,6 +17,7 @@ public class ListType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "list_type_id", nullable = false)
     private Long id;
+    
     @Enumerated(EnumType.STRING)
     @Column(name = "list_type_name", nullable = false, unique = true, length = 15)
     private ListTypeName listTypeName;
