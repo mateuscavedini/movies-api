@@ -6,11 +6,21 @@ import java.util.stream.Collectors;
 
 import io.github.mateuscavedini.moviesapi.enums.ListTypeName;
 import io.github.mateuscavedini.moviesapi.model.List;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 
 public class ListResponseDto {
+    @NotNull(message = "Id must not be null.")
+    @Positive(message = "Id must be a positive number.")
     private Long id;
+
+    @NotNull(message = "ListTypeName must not be null.")
     private ListTypeName listTypeName;
+
+    @NotNull(message = "User must not be null.")
     private UserResponseDto user;
+    
+    @NotNull(message = "Movies must not be null.")
     private Set<MovieResponseDto> movies = new HashSet<>();
 
     public ListResponseDto() {}
