@@ -1,6 +1,6 @@
 package io.github.mateuscavedini.moviesapi.model;
 
-import io.github.mateuscavedini.moviesapi.model.dto.CreateMovieDto;
+import io.github.mateuscavedini.moviesapi.model.dto.ClientMovieResponseDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -33,10 +33,10 @@ public class Movie {
 
     public Movie() {}
 
-    public Movie(CreateMovieDto movieDto) {
+    public Movie(ClientMovieResponseDto movieDto) {
         this.imdbId = movieDto.getImdbId();
         this.title = movieDto.getTitle();
-        this.year = movieDto.getYear();
+        this.year = Integer.parseInt(movieDto.getYear());
         this.plot = movieDto.getPlot();
         this.posterUrl = movieDto.getPosterUrl();
     }
