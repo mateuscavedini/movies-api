@@ -22,7 +22,7 @@ public class Movie {
     @Column(nullable = false)
     private String title;
 
-    @Column(nullable = false)
+    @Column(name = "release_year", nullable = false)
     private Integer year;
 
     @Column(columnDefinition = "text", nullable = false)
