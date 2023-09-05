@@ -16,6 +16,8 @@ public class MovieRepositoryUnitTest {
     @Autowired
     private MovieRepository movieRepository;
 
+    private Movie expectedMovie = new Movie(ClientMockDataUtil.mockClientMovieResponseDtoA());
+
     @AfterEach
     public void tearDown() {
         movieRepository.deleteAll();
@@ -23,7 +25,7 @@ public class MovieRepositoryUnitTest {
     
     @Test
     public void givenPersistedMovie_whenFindingByImdbId_thenOptionalHasMovie() {
-        Movie expectedMovie = movieRepository.save(new Movie(ClientMockDataUtil.mockClientMovieResponseDtoA()));
+        movieRepository.save(expectedMovie);
 
         Optional<Movie> actualOptional = movieRepository.findByImdbId(expectedMovie.getImdbId());
 
@@ -32,9 +34,7 @@ public class MovieRepositoryUnitTest {
 
     @Test
     public void givenUnpersistedMovie_whenFindingByImdbId_thenOptionalIsEmpty() {
-        Movie unpersistedMovie = new Movie(ClientMockDataUtil.mockClientMovieResponseDtoA());
-
-        Optional<Movie> actualOptional = movieRepository.findByImdbId(unpersistedMovie.getImdbId());
+        Optional<Movie> actualOptional = movieRepository.findByImdbId(expectedMovie.getImdbId());
 
         Assertions.assertThat(actualOptional).isEmpty();
     }
