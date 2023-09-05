@@ -18,5 +18,5 @@ public interface ListRepository extends JpaRepository<List, Long> {
     Optional<List> findByIdWithMovies(Long id);
 
     @Query("SELECT l FROM List l LEFT JOIN FETCH l.movies WHERE l.user.id=(:userId)")
-    Optional<List> findAllByUserIdWithMovies(Long userId);
+    Set<List> findAllByUserIdWithMovies(Long userId);
 }
