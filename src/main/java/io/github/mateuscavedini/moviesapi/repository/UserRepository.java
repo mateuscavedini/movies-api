@@ -11,12 +11,12 @@ import io.github.mateuscavedini.moviesapi.model.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-    @Query("SELECT u FROM User u LEFT JOIN FETCH u.roles")
+    @Query("SELECT u FROM User u JOIN FETCH u.roles")
     Set<User> findAllWithRoles();
 
-    @Query("SELECT u FROM User u LEFT JOIN FETCH u.roles WHERE u.id=(:id)")
+    @Query("SELECT u FROM User u JOIN FETCH u.roles WHERE u.id=(:id)")
     Optional<User> findByIdWithRoles(Long id);
 
-    @Query("SELECT u FROM User u LEFT JOIN FETCH u.roles WHERE u.username=(:username)")
+    @Query("SELECT u FROM User u JOIN FETCH u.roles WHERE u.username=(:username)")
     Optional<User> findByUsernameWithRoles(String username);
 }
