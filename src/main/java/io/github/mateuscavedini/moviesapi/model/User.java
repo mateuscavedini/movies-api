@@ -107,4 +107,12 @@ public class User implements UserDetails {
     public Set<Role> getRoles() {
         return roles;
     }
+
+    public Set<List> getLists() {
+        return lists;
+    }
+
+    public void setLists(Set<List> lists) {
+        this.lists = lists;
+    }
 }
